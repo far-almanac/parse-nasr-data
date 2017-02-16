@@ -16,5 +16,13 @@ produce data for the [airports-api][1].
 Download the [56 Day NASR Subscription Data][2] and put it in the
 `./subscription-data` directory.
 
+## Contribute
+
+I'd like help. Please contribute.
+
+## License
+
+Apache2
+
 [1]: http://github.com/far-almanac/airports-api
 [2]: https://nfdc.faa.gov/xwiki/bin/view/NFDC/56+Day+NASR+Subscription
