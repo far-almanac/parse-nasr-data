@@ -9,9 +9,9 @@ class DmsCoordinate
   end
 
   def to_dd
-		fractional = ( @minutes / 60 + @seconds / 3600 )
+    fractional = ( @minutes / 60 + @seconds / 3600 )
     if @declination == "N" || @declination == "E"
-		  @degrees + fractional
+      @degrees + fractional
     else
       @degrees - fractional
     end
