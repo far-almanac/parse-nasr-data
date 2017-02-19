@@ -1,8 +1,12 @@
 require "pikelet"
 
-class Airports
-  def self.parse(lines)
-    definition = Pikelet.define do
+module Airports
+  def self.airport_lines(all_lines)
+    all_lines.select { |line| line.start_with? "APT" }
+  end
+
+  def self.parse(airport_lines)
+    Pikelet.define {
       identifier       27...30
       state            50...70
       city             93...133
@@ -10,7 +14,7 @@ class Airports
       latitude        523...537
       longitude       550...565
       icao           1210...1217
-    end
-    definition.parse(lines)
+    }
+    .parse(airport_lines)
   end
 end
