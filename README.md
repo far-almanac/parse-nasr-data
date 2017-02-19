@@ -1,15 +1,12 @@
 # Parse the 56 Day NASR Subscription Data with Ruby
 
-> Work in progress.
-
-## Goal
-
-This is a work in progress. The long-term goal of this project is to use Ruby
-to parse the 56 Day NASR Subscription Data and create logical Ruby objects out
-of everything contained therein.
+This is a work in progress.
 
 The short term goal is to parse a few of the available fields in order to
 produce data for the [airports-api][1].
+
+The basic premise of parsing the [NASR data][2] with Ruby could branch easily
+out to its own project.
 
 ## Source Data
 
@@ -18,7 +15,7 @@ Download the [56 Day NASR Subscription Data][2] and put it in the
 
 ## Contribute
 
-I'd like help. Please contribute.
+Please fork and make a pull request to contribute.
 
 ## License
 
