@@ -6,7 +6,7 @@ airports_file = "#{data_dir}/APT.txt"
 all_lines     = File.open(airports_file)
 airport_lines = Airports.airport_lines(all_lines)
 airports      = Airports.parse(airport_lines)
-data_keys = %w(identifier airport_name city country icao latitude longitude elevation timezone)
+data_keys     = %w(identifier airport_name city country icao latitude longitude elevation timezone)
 
 desc "Build csv file for airports api"
 task :build do
