@@ -10,10 +10,13 @@ module Airports
       identifier       27...30
       state            50...70
       city             93...133
-      name            133...183
+      country           1...1
+      airport_name    133...183
       latitude        523...537
       longitude       550...565
       icao           1210...1217
+      elevation         1...1
+      timezone          1...1
     }
     .parse(airport_lines)
   end
