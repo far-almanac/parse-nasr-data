@@ -8,10 +8,6 @@ class DmsCoordinate
     @declination = args[3]
   end
 
-  def to_dd
-    (north_or_east) ? absolute_dd : -(absolute_dd)
-  end
-
   def self.new_from_s(str)
     arr         = str.split("-")
     degrees     = arr[0].to_f
@@ -20,6 +16,10 @@ class DmsCoordinate
     seconds     = arr[2].chop.to_f
 
     new(degrees, minutes, seconds, declination)
+  end
+
+  def to_dd
+    (north_or_east) ? absolute_dd : -(absolute_dd)
   end
 
   private
