@@ -29,7 +29,7 @@ class DmsCoordinate
   end
 
   def absolute_dd
-    @degrees + fractional()
+    @degrees + fractional
   end
 
   def north_or_east
