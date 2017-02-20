@@ -10,10 +10,10 @@ class DmsCoordinate
 
   def to_dd
     fractional = ( @minutes / 60 + @seconds / 3600 )
-    if @declination == "N" || @declination == "E"
+    if ["N","E"].include?(@declination)
       @degrees + fractional
     else
-      @degrees - fractional
+      -(@degrees + fractional)
     end
   end
 
