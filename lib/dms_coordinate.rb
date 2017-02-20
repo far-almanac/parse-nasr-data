@@ -9,12 +9,7 @@ class DmsCoordinate
   end
 
   def to_dd
-    fractional = ( @minutes / 60 + @seconds / 3600 )
-    if ["N","E"].include?(@declination)
-      @degrees + fractional
-    else
-      -(@degrees + fractional)
-    end
+    (north_or_east) ? absolute_dd : -(absolute_dd)
   end
 
   def self.new_from_s(str)
@@ -25,5 +20,19 @@ class DmsCoordinate
     seconds     = arr[2].chop.to_f
 
     new(degrees, minutes, seconds, declination)
+  end
+
+  private
+
+  def fractional
+    @minutes / 60 + @seconds / 3600
+  end
+
+  def absolute_dd
+    @degrees + fractional()
+  end
+
+  def north_or_east
+    @declination == "N" || @declination == "E"
   end
 end
