@@ -15,7 +15,6 @@ module Airports
       longitude       550...565
       icao           1210...1217
       elevation       579...585
-      timezone          1...1
     }
     .parse(airport_lines)
   end
