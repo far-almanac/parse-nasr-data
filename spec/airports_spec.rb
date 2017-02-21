@@ -27,5 +27,10 @@ RSpec.describe Airports do
     it "the city" do
       expect(@airport.city).to eq("ADAK ISLAND")
     end
+
+    it "the elevation" do
+      expect(@airport.elevation).to eq("19.5")
+      expect(@airport.elevation.to_f).to eq(19.5)
+    end
   end
 end
