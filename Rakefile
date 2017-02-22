@@ -1,3 +1,4 @@
+require_relative "lib/airport"
 require_relative "lib/airports"
 require_relative "lib/dms_coordinate"
 
@@ -10,13 +11,19 @@ data_keys     = %w(identifier airport_name city country icao latitude longitude 
 
 desc "Build csv file for airports api"
 task :build do
-  airports.each do |ap|
+  airports.each do |airport_pikelet_struct|
+    airport = Airport.new(airport_pikelet_struct)
     data_keys.each_with_index do |key, i|
-      val = ap.send(key)
-      if key == "latitude" || key == "longitude"
-        print DmsCoordinate.new_from_s(val).to_dd
+      if key == "latitude"
+        print airport.latitude_dd
+      elsif key == "longitude"
+        print airport.longitude_dd
+      elsif key == "country"
+        print ""
+      elsif key == "timezone"
+        print airport.timezone.to_s
       else
-        print val
+        print airport.send(key)
       end
       print "," unless i == 8
     end
