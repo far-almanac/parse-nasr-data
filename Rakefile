@@ -14,13 +14,14 @@ task :build do
   airports.each do |airport_pikelet_struct|
     airport = Airport.new(airport_pikelet_struct)
     data_keys.each_with_index do |key, i|
-      if key == "latitude"
+      case key
+      when "latitude"
         print airport.latitude_dd
-      elsif key == "longitude"
+      when "longitude"
         print airport.longitude_dd
-      elsif key == "country"
-        print ""
-      elsif key == "timezone"
+      when "country"
+        print airport.country
+      when "timezone"
         print airport.timezone.to_s
       else
         print airport.send(key)
