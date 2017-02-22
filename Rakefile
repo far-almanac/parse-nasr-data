@@ -12,22 +12,22 @@ data_keys     = %w(identifier airport_name city country icao latitude longitude 
 desc "Build csv file for airports api"
 task :build do
   airports.each do |airport_pikelet_struct|
+    line_obj = []
     airport = Airport.new(airport_pikelet_struct)
     data_keys.each_with_index do |key, i|
       case key
       when "latitude"
-        print airport.latitude_dd
+        line_obj << airport.latitude_dd
       when "longitude"
-        print airport.longitude_dd
+        line_obj << airport.longitude_dd
       when "country"
-        print airport.country
+        line_obj << airport.country
       when "timezone"
-        print airport.timezone.to_s
+        line_obj << airport.timezone.to_s
       else
-        print airport.send(key)
+        line_obj << airport.send(key)
       end
-      print "," unless i == 8
     end
-    puts
+    puts line_obj.join(",")
   end
 end

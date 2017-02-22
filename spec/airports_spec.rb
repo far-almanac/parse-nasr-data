@@ -20,6 +20,10 @@ RSpec.describe Airports do
       expect(@airport.identifier).to eq("ADK")
     end
 
+    it "the icao identifier" do
+      expect(@airport.icao).to eq("PADK")
+    end
+
     it "the state" do
       expect(@airport.state).to eq("ALASKA")
     end

@@ -13,7 +13,7 @@ module Airports
       airport_name    133...183
       latitude        523...537
       longitude       550...565
-      icao           1210...1217
+      icao           1210...1218
       elevation       579...585
     }
     .parse(airport_lines)
