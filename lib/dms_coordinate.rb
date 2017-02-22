@@ -33,6 +33,6 @@ class DmsCoordinate
   end
 
   def north_or_east
-    @declination == "N" || @declination == "E"
+    %w{N E}.include?(@declination)
   end
 end
