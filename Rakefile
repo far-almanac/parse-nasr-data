@@ -17,20 +17,26 @@ task :foo do
   p = []
   k = []
   m = []
+  c = []
+  n = [] # no ICAO
   airports.each do |airport_pikelet_struct|
     a = airport_pikelet_struct
     p << a if a.icao.start_with? "P"
     k << a if a.icao.start_with? "K"
     m << a if a.icao.start_with? "M"
+    c << a if a.icao.start_with? "C"
+    n << a if a.icao.length > 0
   end
-  eh = p + k + m
-  puts "K #{indent(k.count)}"
-  puts "P #{indent(p.count)}"
-  puts "M #{indent(m.count)}"
-  puts "--------------"
-  puts "EH#{indent(eh.count)}"
-  puts "--------------"
-  puts "  #{indent(airports.count)}"
+  t = p + k + m + c
+  puts "K     #{indent(k.count)}"
+  puts "P     #{indent(p.count)}"
+  puts "M     #{indent(m.count)}"
+  puts "C     #{indent(c.count)}"
+  puts "N     #{indent(n.count)}"
+  puts "------------------"
+  puts "TOTAL #{indent(t.count)}"
+  puts "------------------"
+  puts "GTOTAL#{indent(airports.count)}"
 end
 
 desc "Build csv file for airports api"
