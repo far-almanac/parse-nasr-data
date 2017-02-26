@@ -1,6 +1,7 @@
 require_relative "lib/airport"
 require_relative "lib/airports"
 require_relative "lib/dms_coordinate"
+require "geocoder"
 
 data_dir      = "./subscription-data"
 airports_file = "#{data_dir}/APT.txt"
@@ -9,27 +10,14 @@ airport_lines = Airports.airport_lines(all_lines)
 airports      = Airports.parse(airport_lines)
 data_keys     = %w(identifier airport_name city country icao latitude longitude elevation timezone)
 
-def airports_count_start_with(airports, sw)
-  print "ICAO starts with \"#{sw}\": "
-  puts airports.select { |ap| ap.icao.start_with?(sw) }.count
-end
-
-def total_airports(airports)
-  puts "total airports: #{airports.count}"
-end
-
-def no_icao(airports)
-  x = airports.select { |ap| ap.icao.length == 0 }.count
-  puts "no ICAO: #{x}"
-end
-
-task :foo do
-  airports_count_start_with(airports, "K")
-  airports_count_start_with(airports, "P")
-  airports_count_start_with(airports, "M")
-  airports_count_start_with(airports, "C")
-  no_icao(airports)
-  total_airports(airports)
+desc "Find country by coordinates test"
+task :find_country_by_coords do
+  #test_airport = airports.first
+  test_airport = airports.select { |ap| ap.icao.start_with?("M") }.first
+  a = Airport.new(test_airport)
+  lat = a.latitude_dd
+  lng = a.longitude_dd
+  puts Geocoder.search("#{lat}, #{lng}")[0].country
 end
 
 desc "Build csv file for airports api"

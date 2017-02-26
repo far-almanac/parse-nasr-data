@@ -6,6 +6,7 @@ GEM
     dotenv (2.2.0)
     ffi (1.9.17)
     formatador (0.2.5)
+    geocoder (1.4.3)
     guard (2.14.1)
       formatador (>= 0.2.4)
       listen (>= 2.7, < 4.0)
@@ -63,6 +64,7 @@ PLATFORMS
 
 DEPENDENCIES
   dotenv
+  geocoder
   guard-rspec
   pikelet
   pry
