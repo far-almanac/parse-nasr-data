@@ -9,6 +9,30 @@ airport_lines = Airports.airport_lines(all_lines)
 airports      = Airports.parse(airport_lines)
 data_keys     = %w(identifier airport_name city country icao latitude longitude elevation timezone)
 
+def indent(str)
+  '%12s' % str
+end
+
+task :foo do
+  p = []
+  k = []
+  m = []
+  airports.each do |airport_pikelet_struct|
+    a = airport_pikelet_struct
+    p << a if a.icao.start_with? "P"
+    k << a if a.icao.start_with? "K"
+    m << a if a.icao.start_with? "M"
+  end
+  eh = p + k + m
+  puts "K #{indent(k.count)}"
+  puts "P #{indent(p.count)}"
+  puts "M #{indent(m.count)}"
+  puts "--------------"
+  puts "EH#{indent(eh.count)}"
+  puts "--------------"
+  puts "  #{indent(airports.count)}"
+end
+
 desc "Build csv file for airports api"
 task :build do
   airports.each do |airport_pikelet_struct|
