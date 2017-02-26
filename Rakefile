@@ -13,8 +13,8 @@ data_keys     = %w(identifier airport_name city country icao latitude longitude 
 desc "Find country by coordinates test"
 task :find_country_by_coords do
   #test_airport = airports.first
-  #test_airport = airports.select { |ap| ap.icao.start_with?("M") }.first
-  test_airport = airports.select { |ap| ap.icao.start_with?("C") }.first
+  test_airport = airports.select { |ap| ap.icao.start_with?("M") }.first
+  #test_airport = airports.select { |ap| ap.icao.start_with?("C") }.first
   a = Airport.new(test_airport)
   lat = a.latitude_dd
   lng = a.longitude_dd
