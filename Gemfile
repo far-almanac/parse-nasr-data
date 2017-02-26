@@ -4,6 +4,7 @@ gem "rake"
 gem "pikelet"
 gem "timezone"
 gem "dotenv"
+gem "geocoder"
 
 group :development do
   gem "rspec"
