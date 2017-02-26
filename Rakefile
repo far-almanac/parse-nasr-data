@@ -9,34 +9,27 @@ airport_lines = Airports.airport_lines(all_lines)
 airports      = Airports.parse(airport_lines)
 data_keys     = %w(identifier airport_name city country icao latitude longitude elevation timezone)
 
-def indent(str)
-  '%12s' % str
+def airports_count_start_with(airports, sw)
+  print "ICAO starts with \"#{sw}\": "
+  puts airports.select { |ap| ap.icao.start_with?(sw) }.count
+end
+
+def total_airports(airports)
+  puts "total airports: #{airports.count}"
+end
+
+def no_icao(airports)
+  x = airports.select { |ap| ap.icao.length == 0 }.count
+  puts "no ICAO: #{x}"
 end
 
 task :foo do
-  p = []
-  k = []
-  m = []
-  c = []
-  n = [] # no ICAO
-  airports.each do |airport_pikelet_struct|
-    a = airport_pikelet_struct
-    p << a if a.icao.start_with? "P"
-    k << a if a.icao.start_with? "K"
-    m << a if a.icao.start_with? "M"
-    c << a if a.icao.start_with? "C"
-    n << a if a.icao.length > 0
-  end
-  t = p + k + m + c
-  puts "K     #{indent(k.count)}"
-  puts "P     #{indent(p.count)}"
-  puts "M     #{indent(m.count)}"
-  puts "C     #{indent(c.count)}"
-  puts "N     #{indent(n.count)}"
-  puts "------------------"
-  puts "TOTAL #{indent(t.count)}"
-  puts "------------------"
-  puts "GTOTAL#{indent(airports.count)}"
+  airports_count_start_with(airports, "K")
+  airports_count_start_with(airports, "P")
+  airports_count_start_with(airports, "M")
+  airports_count_start_with(airports, "C")
+  no_icao(airports)
+  total_airports(airports)
 end
 
 desc "Build csv file for airports api"
