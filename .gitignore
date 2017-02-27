@@ -3,3 +3,4 @@ subscription-data
 .ruby-version
 .env
 build
+tmp
