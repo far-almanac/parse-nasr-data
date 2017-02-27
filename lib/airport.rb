@@ -19,7 +19,7 @@ class Airport
     @longitude_dd = DmsCoordinate.new_from_s(longitude).to_dd
   end
 
-  %w(identifier icao elevation latitude longitude)
+  %w(identifier icao latitude longitude)
   .each do |deferred_method|
     define_method(deferred_method) do
       @airport_pikelet_struct.send(deferred_method)
@@ -40,6 +40,10 @@ class Airport
 
   def timezone
     Timezone.lookup(latitude_dd, longitude_dd)
+  end
+
+  def elevation
+    @airport_pikelet_struct.elevation.to_f.round
   end
 
   private

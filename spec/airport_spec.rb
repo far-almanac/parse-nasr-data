@@ -24,6 +24,10 @@ RSpec.describe Airport do
       expect(@airport.city).to eq("Adak Island")
     end
 
+    it "elevation" do
+      expect(@airport.elevation).to eq(20)
+    end
+
     context "country" do
       it "of United States" do
         expect(@airport.country).to eq("United States")
