@@ -18,8 +18,8 @@ class DmsCoordinate
     new(degrees, minutes, seconds, declination)
   end
 
-  def to_dd
-    (north_or_east) ? absolute_dd : -(absolute_dd)
+  def to_dd(round_to_places=6)
+    specific_dd.round(round_to_places)
   end
 
   private
@@ -34,5 +34,9 @@ class DmsCoordinate
 
   def north_or_east
     %w{N E}.include?(@declination)
+  end
+
+  def specific_dd
+    (north_or_east) ? absolute_dd : -(absolute_dd)
   end
 end
