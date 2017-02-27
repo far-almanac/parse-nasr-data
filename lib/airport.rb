@@ -1,6 +1,7 @@
 require "timezone"
 require "dotenv"
 require_relative "dms_coordinate"
+require_relative "geocoder-config"
 
 Dotenv.load
 
@@ -25,9 +26,16 @@ class Airport
   end
 
   def country
+    @country ||= geocoder_search_country
   end
 
   def timezone
     Timezone.lookup(latitude_dd, longitude_dd)
+  end
+
+  private
+
+  def geocoder_search_country
+    Geocoder.search("#{latitude_dd}, #{longitude_dd}")[0].country
   end
 end
