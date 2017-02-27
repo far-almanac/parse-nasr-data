@@ -16,6 +16,14 @@ RSpec.describe Airport do
   end
 
   context "has a/an" do
+    it "airport name" do
+      expect(@airport.airport_name).to eq("Adak")
+    end
+    
+    it "city" do
+      expect(@airport.city).to eq("Adak Island")
+    end
+
     context "country" do
       it "of United States" do
         expect(@airport.country).to eq("United States")

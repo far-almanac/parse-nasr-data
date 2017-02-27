@@ -2,6 +2,7 @@ require "timezone"
 require "dotenv"
 require_relative "dms_coordinate"
 require_relative "geocoder-config"
+require "titleize"
 
 Dotenv.load
 
@@ -18,11 +19,19 @@ class Airport
     @longitude_dd = DmsCoordinate.new_from_s(longitude).to_dd
   end
 
-  %w(identifier airport_name city icao elevation latitude longitude)
+  %w(identifier icao elevation latitude longitude)
   .each do |deferred_method|
     define_method(deferred_method) do
       @airport_pikelet_struct.send(deferred_method)
     end
+  end
+
+  def airport_name
+    @airport_pikelet_struct.airport_name.titleize
+  end
+
+  def city
+    @airport_pikelet_struct.city.titleize
   end
 
   def country

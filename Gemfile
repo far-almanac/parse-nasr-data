@@ -5,6 +5,7 @@ gem "pikelet"
 gem "timezone"
 gem "dotenv"
 gem "geocoder"
+gem "titleize"
 
 group :development do
   gem "rspec"
