@@ -1,14 +1,7 @@
-require "timezone"
-require "dotenv"
+require_relative "timezone_config"
 require_relative "dms_coordinate"
-require_relative "geocoder-config"
+require_relative "geocoder_config"
 require "titleize"
-
-Dotenv.load
-
-Timezone::Lookup.config(:google) do |c|
-  c.api_key = ENV["API_KEY"]
-end
 
 class Airport
   attr_reader :latitude_dd, :longitude_dd
