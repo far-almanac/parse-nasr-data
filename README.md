@@ -11,5 +11,5 @@ to undertake developing a more thorough parser.
 
 Apache2
 
-[1]: http://github.com/far-almanac/airports-api
+[1]: http://github.com/ryanburnette/airports-api
 [2]: https://nfdc.faa.gov/xwiki/bin/view/NFDC/56+Day+NASR+Subscription
